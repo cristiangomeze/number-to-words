@@ -2,14 +2,13 @@
 
 namespace NumberToWords\NumberTransformer;
 
-use NumberToWords\Legacy\Numbers\Words;
+use NumberToWords\Language\Spanish\SpanishConverter;
+use NumberToWords\Language\Spanish\SpanishDictionary;
 
 class SpanishNumberTransformer implements NumberTransformer
 {
     public function toWords(int $number): string
     {
-        $converter = new Words();
-
-        return $converter->transformToWords($number, 'es');
+        return (new SpanishConverter(new SpanishDictionary()))->convert($number);
     }
 }
